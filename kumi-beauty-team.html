@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team — KUMI Beauty Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; height: auto; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: #faf7f4;
+    color: #4a2c2a;
+    line-height: 1.6;
+  }
+
+  /* ─── Navigation ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 70px;
+    background: rgba(250,247,244,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(188,152,126,0.15);
+  }
+  nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #4a2c2a; }
+  .logo-icon { width: 50px; height: 50px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .logo-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; margin-left: 60px; }
+  .nav-links a {
+    font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    color: #4a2c2a; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: #bc987e; }
+  .nav-blog-link {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    color: #fff; background: #bc987e;
+    padding: 8px 20px; border-radius: 3px;
+    transition: background 0.3s;
+  }
+  .nav-blog-link:hover { background: #a8856c; }
+  .nav-lang-link {
+    font-size: 11px; font-weight: 500; letter-spacing: 1px;
+    text-decoration: none; color: #4a2c2a;
+    padding: 8px 12px; border-radius: 3px;
+    border: 1px solid rgba(188,152,126,0.3);
+    transition: background 0.3s; margin-left: 8px;
+  }
+  .nav-lang-link:hover { background: #f5ede6; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 1.5px; background: #4a2c2a; border-radius: 2px; }
+  .nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; background: rgba(0,0,0,0.2); }
+  .nav-overlay.open { display: block; }
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links {
+      display: none; flex-direction: column; position: fixed; top: 70px; right: 0; width: 260px;
+      background: #fff; border-radius: 0 0 0 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      padding: 16px 0; gap: 0; margin-left: 0; z-index: 999;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 24px; border-bottom: 1px solid rgba(188,152,126,0.08); font-size: 13px; }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-links a:hover { background: #f5ede6; }
+    .hamburger { display: flex; }
+    .nav-blog-link { display: none; }
+    .nav-lang-link { display: none; }
+  }
+  @media (max-width: 600px) {
+    body { overflow-x: hidden; }
+    nav { padding: 0 16px; height: 60px; }
+    .nav-links { top: 60px; }
+    .logo-icon { width: 40px; height: 40px; }
+    .page-header { margin-top: 60px; padding: 30px 16px 24px; }
+    .page-header h1 { font-size: 28px; }
+    .page-header p { font-size: 13px; }
+    section { padding: 40px 16px; }
+    .team-grid { grid-template-columns: 1fr; gap: 16px; }
+    .team-section { padding: 0 16px 40px; }
+    .join-section { padding: 40px 16px; }
+    .join-section h2 { font-size: 26px; }
+    footer { padding: 20px 16px; font-size: 11px; }
+  }
+
+  /* ─── Page Header ─── */
+  .page-header {
+    margin-top: 82px; padding: 60px 20px 40px;
+    text-align: center;
+  }
+  .page-header .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; color: #bc987e; margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 600; color: #4a2c2a; line-height: 1.15;
+  }
+  .page-header p {
+    max-width: 520px; margin: 16px auto 0;
+    font-size: 15px; font-weight: 300; color: #6b4f4d; line-height: 1.7;
+  }
+
+  /* ─── Team Grid ─── */
+  .team-section { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .team-card {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(74,44,42,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(74,44,42,0.1);
+  }
+  .team-card .photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #efe9e3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .team-card .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .team-card .photo .placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: #bc987e; letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .team-card .info {
+    padding: 16px 18px 20px;
+    text-align: center;
+  }
+  .team-card .info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: #4a2c2a; margin-bottom: 2px;
+  }
+  .team-card .info .role {
+    font-size: 10px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: #bc987e; margin-bottom: 8px;
+  }
+  .team-card .info .bio {
+    font-size: 13px; font-weight: 300; color: #6b4f4d; line-height: 1.6;
+  }
+
+  /* ─── Join Section ─── */
+  .join-section {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(188,152,126,0.15);
+  }
+  .join-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 600; color: #4a2c2a; margin-bottom: 8px;
+  }
+  .join-section p {
+    font-size: 14px; font-weight: 300; color: #6b4f4d; max-width: 440px; margin: 0 auto 20px;
+  }
+  .join-section .btn {
+    display: inline-block; padding: 12px 36px;
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    background: #bc987e; color: #fff; border-radius: 3px;
+    transition: background 0.3s; border: none; cursor: pointer;
+  }
+  .join-section .btn:hover { background: #a8856c; }
+
+  /* ─── Footer ─── */
+  footer {
+    padding: 28px 20px; text-align: center;
+    border-top: 1px solid rgba(188,152,126,0.12);
+    font-size: 12px; color: #6b4f4d;
+  }
+  footer a {
+    color: #bc987e; text-decoration: none; font-weight: 500;
+    transition: color 0.3s;
+  }
+  footer a:hover { color: #a8856c; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav>
+    <a href="kumi-beauty-salon.html" class="logo">
+      <div class="logo-icon">
+        <img src="images/logo.png" alt="KUMI Beauty Salon">
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="kumi-beauty-salon.html">Home</a></li>
+      <li><a href="kumi-beauty-salon.html#about">About</a></li>
+      <li><a href="kumi-beauty-salon.html#services">Services</a></li>
+      <li><a href="kumi-beauty-salon.html#gallery">Gallery</a></li>
+      <li><a href="kumi-beauty-team.html" style="color:#bc987e;">Meet the Team</a></li>
+      <li><a href="kumi-beauty-salon.html#contact">Contact</a></li>
+    </ul>
+    <a href="kumi-beauty-blog.html" class="nav-blog-link">Blog</a>
+    <a href="kumi-beauty-salon-ar.html" class="nav-lang-link">عربي</a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+  </nav>
+
+  <!-- ─── Page Header ─── -->
+  <section class="page-header">
+    <div class="section-label">Meet the Team</div>
+    <h1>Your Beauty Experts</h1>
+    <p>Talented professionals dedicated to making you feel beautiful, confident, and pampered.</p>
+  </section>
+
+  <!-- ─── Team Grid ─── -->
+  <section class="team-section">
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-1.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-2.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-3.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-4.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-5.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-6.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-7.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="photo">
+          <img src="images/team-8.jpg" alt="Team Member">
+        </div>
+        <div class="info">
+          <h3>Name</h3>
+          <div class="role">Role</div>
+          <p class="bio">Short bio about the team member.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Join Section ─── -->
+  <div class="join-section">
+    <h2>Join Our Team</h2>
+    <p>We're always looking for talented beauty professionals to join the KUMI family.</p>
+    <a href="kumi-beauty-salon.html#contact" class="btn">Get in Touch</a>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <p>&copy; 2026 KUMI Beauty Salon &mdash; Doha, Qatar.
+      <a href="https://www.instagram.com/kumibeautydoha/" target="_blank">Instagram</a> &middot;
+      <a href="https://www.facebook.com/profile.php?id=61553049604560" target="_blank">Facebook</a> &middot;
+      <a href="kumi-beauty-salon.html">Back to Main Site</a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
