@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — KUMI Beauty Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; height: auto; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: #faf7f4;
+    color: #4a2c2a;
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 70px;
+    background: rgba(250,247,244,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(188,152,126,0.15);
+  }
+  nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #4a2c2a; }
+  .logo-icon { width: 50px; height: 50px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .logo-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; margin-left: 60px; }
+  .nav-links a {
+    font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    color: #4a2c2a; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: #bc987e; }
+  .nav-blog-link {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    color: #4a2c2a; margin-left: auto; transition: color 0.3s;
+  }
+  .nav-blog-link:hover { color: #bc987e; }
+  .nav-lang-link {
+    font-size: 11px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none; color: #4a2c2a;
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid rgba(188,152,126,0.3);
+    transition: background 0.3s; margin-left: 8px;
+  }
+  .nav-lang-link:hover { background: #f5ede6; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 1.5px; background: #4a2c2a; border-radius: 2px; }
+  .nav-overlay { display: none; position: fixed; inset: 0; z-index: 998; background: rgba(0,0,0,0.2); }
+  .nav-overlay.open { display: block; }
+
+  .page-header {
+    text-align: center;
+    padding: 50px 20px 40px;
+    margin-top: 70px;
+  }
+  .section-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 4px;
+    text-transform: uppercase; color: #bc987e; margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 600; color: #4a2c2a; line-height: 1.15;
+  }
+
+  .about-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .about-grid .image-wrap {
+    background: #efe9e3;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .about-grid .image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    display: block;
+  }
+  .image-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255,255,255,0.9);
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4a2c2a;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .image-caption span {
+    font-size: 11px;
+    font-weight: 400;
+    color: #bc987e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    font-family: 'Jost', sans-serif;
+    margin-top: 2px;
+  }
+
+  .about-text {
+    padding: 20px 0;
+  }
+  .about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #4a2c2a;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .about-text p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #6b4f4d;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-text .btn {
+    display: inline-block;
+    padding: 12px 36px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #bc987e;
+    color: #fff;
+    border-radius: 3px;
+    transition: background 0.3s;
+    margin-top: 10px;
+  }
+  .about-text .btn:hover { background: #a8856c; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .about-stats .stat-box {
+    background: #fff;
+    padding: 24px 16px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(74,44,42,0.05);
+  }
+  .about-stats .stat-box .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #8b6f5c;
+  }
+  .about-stats .stat-box .label {
+    font-size: 12px;
+    color: #6b4f4d;
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  footer {
+    padding: 28px 20px; text-align: center;
+    border-top: 1px solid rgba(188,152,126,0.12);
+    font-size: 12px; color: #6b4f4d;
+  }
+  footer a {
+    color: #bc987e; text-decoration: none; font-weight: 500;
+    transition: color 0.3s;
+  }
+  footer a:hover { color: #a8856c; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links {
+      display: none; flex-direction: column; position: fixed; top: 70px; right: 0; width: 260px;
+      background: #fff; border-radius: 0 0 0 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      padding: 16px 0; gap: 0; margin-left: 0; z-index: 999;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 24px; border-bottom: 1px solid rgba(188,152,126,0.08); font-size: 13px; }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-links a:hover { background: #f5ede6; }
+    .hamburger { display: flex; }
+    .nav-blog-link { display: none; }
+    .nav-lang-link { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 16px; height: 60px; }
+    .nav-links { top: 60px; }
+    .logo-icon { width: 40px; height: 40px; }
+    .page-header { margin-top: 60px; padding: 30px 16px 24px; }
+    .page-header h1 { font-size: 32px; }
+    .about-content { padding: 0 16px 60px; }
+    .about-text h2 { font-size: 26px; }
+    .about-text { padding: 10px 0; }
+    .about-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .about-stats .stat-box { padding: 16px; }
+    .about-stats .stat-box .num { font-size: 24px; }
+    .image-caption { font-size: 15px; padding: 10px 16px; bottom: 12px; left: 12px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <img src="images/logo.png" alt="KUMI Beauty Salon">
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="kumi-beauty-team.html">Meet the Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="kumi-beauty-blog.html" class="nav-blog-link">Blog</a>
+    <a href="kumi-beauty-salon-ar.html" class="nav-lang-link">عربي</a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+  </nav>
+
+  <section class="page-header">
+    <div class="section-label">About KUMI</div>
+    <h1>More than just a beauty service</h1>
+  </section>
+
+  <section class="about-content">
+    <div class="about-grid">
+      <div class="image-wrap">
+        <img src="images/about.jpg" alt="KUMI Beauty Salon">
+      </div>
+      <div class="image-wrap">
+        <img src="images/about-team.jpg" alt="Our Team">
+        <div class="image-caption">
+          Meet the Team!
+          <span>Your beauty experts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <h2>Your Destination for Beauty &amp; Wellness</h2>
+      <p>
+        Kumi Salon was officially established on October 28, 2023, with a vision to create a welcoming space where beauty, confidence, and self-care come together. From the very beginning, our goal has been simple: to help every client look and feel their best.
+      </p>
+      <p>
+        We offer a wide variety of beauty services, carefully designed to meet different styles, needs, and personalities. Whether you're here for a refresh, a transformation, or regular self-care, our team is dedicated to delivering quality service with attention, creativity, and care.
+      </p>
+      <p>
+        Located at Mirqab Complex, First Floor Office 20, Doha, Qatar, Kumi Salon is proud to serve our community in a comfortable and relaxing environment.
+      </p>
+      <a href="index.html#services" class="btn">Explore More</a>
+    </div>
+
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="num">500+</div>
+        <div class="label">Happy Customers</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">10+</div>
+        <div class="label">Expert Stylists</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">50+</div>
+        <div class="label">Premium Services</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">4.9</div>
+        <div class="label">Customer Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 KUMI Beauty Salon &mdash; Doha, Qatar.
+      <a href="https://www.instagram.com/kumibeautydoha/" target="_blank">Instagram</a> &middot;
+      <a href="https://www.facebook.com/profile.php?id=61553049604560" target="_blank">Facebook</a> &middot;
+      <a href="index.html">Back to Main Site</a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
