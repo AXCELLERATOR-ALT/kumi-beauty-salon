@@ -375,7 +375,6 @@
       border-radius: 4px;
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
-      overflow: hidden;
     }
 
     .service-card::before {
@@ -386,6 +385,7 @@
       height: 0;
       background: #bc987e;
       transition: height 0.4s;
+      z-index: 1;
     }
 
     .service-card:hover::before {
@@ -393,8 +393,9 @@
     }
 
     .service-card:hover {
-      transform: scale(1.06) !important;
-      box-shadow: 0 12px 40px rgba(188, 152, 126, 0.15);
+      transform: scale(1.35) !important;
+      box-shadow: 0 20px 60px rgba(188, 152, 126, 0.2);
+      z-index: 10;
     }
 
     .service-card .icon {
