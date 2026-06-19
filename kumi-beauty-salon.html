@@ -6,6 +6,7 @@
   <title>KUMI Beauty Salon — Doha, Qatar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -919,6 +920,20 @@
       }
     }
 
+    /* ─── Reveal Animations ─── */
+    .reveal {
+      visibility: hidden;
+      position: relative;
+      overflow: hidden;
+    }
+    .reveal img {
+      transform: scale(1.4);
+      transition: none;
+    }
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
     /* ─── Responsive ─── */
     @media (max-width: 900px) {
       nav {
@@ -1132,15 +1147,15 @@
   <!-- ─── Hero ─── -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <div class="subtitle">Welcome to</div>
-      <div class="hero-logo" style="margin-bottom:16px;">
+      <div class="subtitle" data-aos="fade-up">Welcome to</div>
+      <div class="hero-logo" style="margin-bottom:16px;" data-aos="fade-up" data-aos-delay="100">
         <img src="images/logo.png" alt="KUMI Beauty Salon" style="width:260px;height:auto;display:block;margin:0 auto;">
       </div>
-      <div class="tagline">Beauty &middot; Elegance &middot; Confidence</div>
-      <p class="hero-desc">
+      <div class="tagline" data-aos="fade-up" data-aos-delay="200">Beauty &middot; Elegance &middot; Confidence</div>
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="300">
         Every woman deserves to feel beautiful, confident, and pampered. Experience high-quality treatments in a relaxing, welcoming environment.
       </p>
-      <div>
+      <div data-aos="fade-up" data-aos-delay="400">
         <a href="#contact" class="btn">Book Appointment</a>
         <a href="#services" class="btn btn-outline">Our Services</a>
       </div>
@@ -1156,11 +1171,11 @@
   <!-- ─── About ─── -->
   <section id="about">
     <div class="about-grid">
-      <div class="about-image" style="background: none; overflow: hidden;">
+      <div class="about-image reveal" style="background: none; overflow: hidden;">
         <img src="images/about.jpg" alt="KUMI Beauty Salon" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
       </div>
-      <div class="about-text">
-        <div class="section-label">About KUMI</div>
+      <div class="about-text" data-aos="fade-left" data-aos-delay="100">
+        <div class="section-label" data-aos="fade-up">About KUMI</div>
         <h3>More than just a beauty service</h3>
         <p>
           Kumi Salon was officially established on October 28, 2023, with a vision to create a welcoming space where beauty, confidence, and self-care come together. From the very beginning, our goal has been simple: to help every client look and feel their best.
@@ -1197,15 +1212,15 @@
   <section id="services">
     <div class="services-inner">
       <div class="text-center">
-        <div class="section-label">Our Expertise</div>
-        <h2 class="section-title">Beauty &amp; Wellness Services</h2>
-        <p class="section-desc mx-auto">
+        <div class="section-label" data-aos="fade-up">Our Expertise</div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Beauty &amp; Wellness Services</h2>
+        <p class="section-desc mx-auto" data-aos="fade-up" data-aos-delay="200">
           A complete range of premium treatments from hair and skincare to massage and BODY CARE packages.
         </p>
       </div>
 
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
           <span class="icon">&#9874;</span>
           <h4>Hair Styling &amp; Hair<br>Treatments</h4>
           <ul>
@@ -1260,7 +1275,23 @@
             <li>Gentle Exfoliation</li>
           </ul>
         </div>
-        <div class="service-card">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="icon">&#9994;</span>
+          <h4>Nail Care</h4>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <span class="icon">&#9788;</span>
+          <h4>Skincare and Facials</h4>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <span class="icon">&#9787;</span>
+          <h4>Waxing &amp; Soaking<br>(Hyaluronic, Milk or<br>Collagen)</h4>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+          <span class="icon">&#10070;</span>
+          <h4>Body Scrub</h4>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="600">
           <span class="icon">&#9775;</span>
           <h4>Korean Hair Spa,<br>Massages &amp; Sauna Wrap</h4>
           <ul>
@@ -1277,45 +1308,45 @@
   <!-- ─── Service Details (Image + Bio) ─── -->
   <section class="service-details">
     <div class="text-center">
-      <div class="section-label">What We Offer</div>
-      <h2 class="section-title">Our Specialties</h2>
+      <div class="section-label" data-aos="fade-up">What We Offer</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Our Specialties</h2>
     </div>
 
     <div class="service-detail-row" style="margin-top:44px;">
-      <div class="service-detail-image" style="background-image:url('images/SERVICE-HAIR.JPG');"></div>
-      <div class="service-detail-text">
+      <div class="service-detail-image reveal" style="background-image:url('images/SERVICE-HAIR.JPG');"></div>
+      <div class="service-detail-text" data-aos="fade-left" data-aos-delay="200">
         <h3>Hair Styling &amp; Hair Treatments</h3>
         <p>We offer professional hair styling and advanced hair treatments, including Brazilian, Protein Collagen, and Nashi treatments, designed to restore, strengthen, and enhance the natural beauty of your hair.</p>
       </div>
     </div>
 
     <div class="service-detail-row reverse">
-      <div class="service-detail-image" style="background-image:url('images/SERVICE-NAILS.JPG');"></div>
-      <div class="service-detail-text">
+      <div class="service-detail-image reveal" style="background-image:url('images/SERVICE-NAILS.JPG');"></div>
+      <div class="service-detail-text" data-aos="fade-right" data-aos-delay="200">
         <h3>Nail Care</h3>
         <p>We also offer professional nail care services, including gel polish, nail styling, and creative nail art, tailored to enhance and maintain beautiful, well-groomed nails.</p>
       </div>
     </div>
 
     <div class="service-detail-row">
-      <div class="service-detail-image" style="background-image:url('images/SERVICE-FACIAL.JPG');"></div>
-      <div class="service-detail-text">
+      <div class="service-detail-image reveal" style="background-image:url('images/SERVICE-FACIAL.JPG');"></div>
+      <div class="service-detail-text" data-aos="fade-left" data-aos-delay="200">
         <h3>Skincare and Facials</h3>
         <p>We offer different types of facial treatments tailored to various skin needs, including classic facials, BB Cream treatments, and advanced procedures such as Dermapen, using only Thalgo products to ensure safe, effective, and premium results.</p>
       </div>
     </div>
 
     <div class="service-detail-row reverse">
-      <div class="service-detail-image" style="background-image:url('images/SERVICE-WELLNESS.JPG');"></div>
-      <div class="service-detail-text">
+      <div class="service-detail-image reveal" style="background-image:url('images/SERVICE-WELLNESS.JPG');"></div>
+      <div class="service-detail-text" data-aos="fade-right" data-aos-delay="200">
         <h3>Waxing &amp; Soaking (Hyaluronic, Milk or Collagen)</h3>
         <p>We offer professional waxing and hair removal services designed to provide smooth, flawless skin while ensuring comfort and safety. We also offer soaking treatment that deeply nourishes &amp; hydrates the skin using your choice of Milk, Hyaluronic, or Collagen infusion. Each option is designed to improve skin softness, moisture, and elasticity, leaving the body feeling smooth, refreshed, and well-nourished. We use a premium soaking product sourced from Japan.</p>
       </div>
     </div>
 
     <div class="service-detail-row">
-      <div class="service-detail-image" style="background-image:url('images/SERVICE-SKIN.JPG');"></div>
-      <div class="service-detail-text">
+      <div class="service-detail-image reveal" style="background-image:url('images/SERVICE-SKIN.JPG');"></div>
+      <div class="service-detail-text" data-aos="fade-left" data-aos-delay="200">
         <h3>Body Scrub</h3>
         <p>KUMI offers professional body scrub treatment designed to gently exfoliate the skin, remove dead skin cells, and promote natural skin renewal. Using carefully selected ingredients and soothing techniques, our body scrub service helps improve skin texture.</p>
       </div>
@@ -1325,46 +1356,46 @@
   <!-- ─── Why Choose ─── -->
   <section id="why">
     <div class="text-center">
-      <div class="section-label">Why KUMI</div>
-      <h2 class="section-title">Designed for You</h2>
+      <div class="section-label" data-aos="fade-up">Why KUMI</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Designed for You</h2>
     </div>
     <div class="why-grid">
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="100">
         <div class="check">&#10003;</div>
         <h5>Expert Professionals</h5>
         <p>Experienced beauty team</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="200">
         <div class="check">&#10003;</div>
         <h5>Premium Products</h5>
         <p>High-quality brands</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="300">
         <div class="check">&#10003;</div>
         <h5>Relaxing Atmosphere</h5>
         <p>Clean &amp; hygienic environment</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="400">
         <div class="check">&#10003;</div>
         <h5>Personalized Care</h5>
         <p>Tailored beauty solutions</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="500">
         <div class="check">&#10003;</div>
         <h5>Affordable Packages</h5>
         <p>Value for every budget</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="600">
         <div class="check">&#10003;</div>
         <h5>Convenient Location</h5>
         <p>In the heart of Doha</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="700">
         <div class="check">&#10003;</div>
         <h5>BODY CARE Services</h5>
         <p>Special event expertise</p>
       </div>
-      <div class="why-item">
+      <div class="why-item" data-aos="fade-up" data-aos-delay="800">
         <div class="check">&#10003;</div>
         <h5>Complete Wellness</h5>
         <p>Head-to-toe care</p>
@@ -1376,9 +1407,9 @@
   <section class="bridal" id="bridal">
     <div class="bridal-inner">
       <div>
-        <div class="section-label">BODY CARE</div>
-        <h2 class="section-title">Your Special Day<br>Deserves Perfection</h2>
-        <p class="section-desc">
+        <div class="section-label" data-aos="fade-up">BODY CARE</div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Your Special Day<br>Deserves Perfection</h2>
+        <p class="section-desc" data-aos="fade-up" data-aos-delay="200">
           Let our beauty experts create your dream BODY CARE look with elegance and sophistication.
         </p>
         <div class="bridal-services">
@@ -1391,7 +1422,7 @@
         </div>
         <a href="#contact" class="btn" style="margin-top: 28px;">Inquire Now</a>
       </div>
-      <div class="bridal-image" style="background: none; overflow: hidden;">
+      <div class="bridal-image reveal" style="background: none; overflow: hidden;">
         <img src="images/bridal.jpg" alt="BODY CARE" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
       </div>
     </div>
@@ -1400,9 +1431,9 @@
   <!-- ─── Gallery ─── -->
   <section id="gallery">
     <div class="text-center">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">Our Work</h2>
-      <p class="section-desc mx-auto">
+      <div class="section-label" data-aos="fade-up">Portfolio</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Our Work</h2>
+      <p class="section-desc mx-auto" data-aos="fade-up" data-aos-delay="200">
         Follow us on Instagram <a href="https://www.instagram.com/kumibeautydoha/" target="_blank" style="color:#bc987e;text-decoration:none;font-weight:500;">@kumibeautydoha</a> for the latest transformations.
       </p>
     </div>
@@ -1475,21 +1506,21 @@
   <section id="testimonials">
     <div class="testimonials-inner">
       <div class="text-center">
-        <div class="section-label">Testimonials</div>
-        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="section-label" data-aos="fade-up">Testimonials</div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">What Our Clients Say</h2>
       </div>
       <div class="testimonials-grid">
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
           <div class="stars">★★★★★</div>
           <blockquote>I felt truly pampered during my visit to Kumi Salon. The ambiance is incredibly relaxing and calming, and the staff are so friendly. They use high-quality international products from Europe and Japan. I especially enjoyed the Japanese tea. I can't wait to book the scrub and massage next!</blockquote>
           <span class="reviewer">— Catherine Nicolas <span class="review-date">(4 months ago)</span></span>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
           <div class="stars">★★★★★</div>
           <blockquote>I had an amazing massage with Arlene. She is incredibly professional and her technique is perfect for anyone looking for a truly relaxing experience. She is clearly an expert at what she does, and I really appreciated how clean and professional she kept everything. Highly recommend her!</blockquote>
           <span class="reviewer">— Oumaima <span class="review-date">(2 months ago)</span></span>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
           <div class="stars">★★★★★</div>
           <blockquote>Kumi has been my one stop shop for my self-care needs. You get princess treatment for a very reasonable price. From mani-pedi, threading, hair spa, express facial to massage treatments with soaking, sauna blanket and hot stone. I always end up availing a package for next visit. Everyone is so accommodating and makes you comfortable. Highly recommended!</blockquote>
           <span class="reviewer">— Rhea Relivo <span class="review-date">(2 months ago)</span></span>
@@ -1501,9 +1532,9 @@
   <!-- ─── Contact ─── -->
   <section id="contact">
     <div class="text-center">
-      <div class="section-label">Get in Touch</div>
-      <h2 class="section-title">Book Your Appointment</h2>
-      <p class="section-desc mx-auto">
+      <div class="section-label" data-aos="fade-up">Get in Touch</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Book Your Appointment</h2>
+      <p class="section-desc mx-auto" data-aos="fade-up" data-aos-delay="200">
         Experience beauty, relaxation, and confidence at KUMI Beauty Salon.
       </p>
     </div>
@@ -1570,8 +1601,40 @@
     </p>
   </footer>
 
-  <script async src="//www.instagram.com/embed.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
+    AOS.init({
+      duration: 1200,
+      delay: 200,
+      once: true,
+      easing: 'ease',
+    });
+
+    // Clip-path reveal for images (like Traya.qa)
+    {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const container = entry.target;
+            const img = container.querySelector('img');
+            const tl = gsap.timeline({ ease: 'power3.out' });
+            tl.set(container, { visibility: 'visible' });
+            tl.fromTo(container,
+              { clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)' },
+              { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 1 }
+            );
+            if (img) {
+              tl.from(img, 4, { scale: 1.4 }, -1);
+            }
+            observer.unobserve(container);
+          }
+        });
+      }, { threshold: 0.9 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
     function toggleNav() {
       document.getElementById('navLinks').classList.toggle('open');
     }
