@@ -422,17 +422,23 @@
       font-size: 13px;
       color: rgba(74, 44, 42, 0.55);
       font-weight: 300;
-      padding: 4px 0;
+      padding: 5px 0;
       position: relative;
-      padding-left: 16px;
+      padding-left: 22px;
     }
 
     .service-card ul li::before {
-      content: '—';
+      content: '✦';
       position: absolute;
       left: 0;
+      top: 5px;
       color: #bc987e;
-      font-weight: 300;
+      font-size: 11px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover ul li::before {
+      transform: rotate(90deg) scale(1.2);
     }
 
     /* ─── Why Choose ─── */
