@@ -34,53 +34,10 @@
       height: 100%;
       pointer-events: none;
       overflow: hidden;
-    }
-    .bg-smoke .smoke {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-    }
-    .bg-smoke .smoke-1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(230,195,175,0.3), transparent 70%);
-      top: -100px;
-      left: -200px;
-    }
-    .bg-smoke .smoke-2 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(220,185,165,0.25), transparent 70%);
-      bottom: -100px;
-      right: -150px;
-    }
-    .bg-smoke .smoke-3 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(235,200,180,0.2), transparent 70%);
-      top: 40%;
-      right: -80px;
-    }
-    .bg-smoke .smoke-4 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(225,190,170,0.2), transparent 70%);
-      top: 20%;
-      left: -100px;
-    }
-    .bg-smoke .smoke-5 {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(240,210,190,0.15), transparent 70%);
-      bottom: 10%;
-      left: 30%;
-    }
-    .bg-smoke .smoke-6 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(210,175,155,0.25), transparent 70%);
-      bottom: 30%;
-      left: 5%;
+      background-image: url('images/background.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
     }
     section, .tagline-banner, footer {
       position: relative;
@@ -1246,14 +1203,7 @@
     </div>
   </nav>
 
-  <div class="bg-smoke">
-    <div class="smoke smoke-1"></div>
-    <div class="smoke smoke-2"></div>
-    <div class="smoke smoke-3"></div>
-    <div class="smoke smoke-4"></div>
-    <div class="smoke smoke-5"></div>
-    <div class="smoke smoke-6"></div>
-  </div>
+  <div class="bg-smoke"></div>
 
   <!-- ─── Hero ─── -->
   <section class="hero" id="home">
