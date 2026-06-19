@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صالون كومي للتجميل — الدوحة، قطر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cairo', 'Jost', sans-serif;
+    color: #4a2c2a;
+    background: #faf7f4;
+    line-height: 1.8;
+  }
+  h1, h2, h3, h4 { font-weight: 700; }
+
+  /* ─── Navigation ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,247,244,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(188,152,126,0.15);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #4a2c2a; }
+  .logo-icon { width: 50px; height: 50px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .logo-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; letter-spacing: 3px; color: #4a2c2a; line-height: 1; }
+  .logo-text span { color: #bc987e; }
+  nav .nav-links { display: flex; gap: 32px; list-style: none; }
+  nav .nav-links a {
+    text-decoration: none; color: #4a2c2a; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s;
+  }
+  nav .nav-links a:hover { color: #bc987e; }
+  .nav-blog-link {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    color: #fff; background: #bc987e;
+    padding: 8px 20px; border-radius: 3px;
+    transition: background 0.3s;
+  }
+  .nav-blog-link:hover { background: #a8856c; }
+  .nav-lang-link {
+    font-size: 11px; font-weight: 500; letter-spacing: 1px;
+    text-decoration: none; color: #4a2c2a;
+    padding: 8px 12px; border-radius: 3px;
+    border: 1px solid rgba(188,152,126,0.3);
+    transition: background 0.3s;
+  }
+  .nav-lang-link:hover { background: #f5ede6; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 1.5px; background: #4a2c2a; border-radius: 2px; }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 20px;
+    background: linear-gradient(135deg, #faf7f4 0%, #f5ede6 100%);
+  }
+  .hero-content { max-width: 700px; }
+  .hero-content .subtitle {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: #bc987e; margin-bottom: 8px;
+    font-family: 'Cairo', sans-serif;
+  }
+  .hero-content .hero-logo { margin-bottom: 16px; }
+  .hero-content .hero-logo img { width: 260px; margin: 0 auto; }
+  .hero-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px; font-weight: 600; color: #4a2c2a; line-height: 1.1;
+    letter-spacing: 4px; margin-bottom: 8px;
+  }
+  .hero-content h1 em { font-style: italic; color: #bc987e; }
+  .hero-content .tagline {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: #6b4f4d; margin-bottom: 20px;
+  }
+  .hero-content .hero-desc {
+    font-size: 15px; color: #6b4f4d; line-height: 1.8; margin-bottom: 30px; max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+  .btn {
+    display: inline-block; padding: 14px 36px; font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    background: #bc987e; color: #fff; border-radius: 3px;
+    transition: background 0.3s; border: none; cursor: pointer;
+  }
+  .btn:hover { background: #a8856c; }
+  .btn-outline { background: transparent; border: 1px solid #bc987e; color: #bc987e; margin-right: 12px; }
+  .btn-outline:hover { background: #bc987e; color: #fff; }
+  .scroll-indicator {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #bc987e;
+    animation: bounce 2s infinite; cursor: pointer;
+  }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* ─── Sections ─── */
+  section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: #bc987e; margin-bottom: 10px;
+    font-family: 'Cairo', sans-serif;
+  }
+  .section-title {
+    font-size: 38px; font-weight: 600; color: #4a2c2a; margin-bottom: 10px; line-height: 1.2;
+  }
+  .section-desc { font-size: 15px; color: #6b4f4d; line-height: 1.8; max-width: 600px; }
+  .text-center { text-align: center; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+
+  /* ─── About ─── */
+  .about { background: #fff; max-width: 100%; }
+  .about-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 40px; }
+  .about-image { border-radius: 4px; overflow: hidden; background: #efe9e3; }
+  .about-image img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+  .about-text p { font-size: 15px; color: #6b4f4d; line-height: 2; margin-bottom: 16px; }
+
+  /* ─── Services ─── */
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .service-card {
+    background: #fff; border-radius: 4px; padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(74,44,42,0.06); transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-card h4 { font-size: 20px; color: #4a2c2a; margin-bottom: 6px; }
+  .service-card .price { font-size: 12px; color: #bc987e; font-weight: 500; margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: #6b4f4d; line-height: 1.8; }
+
+  /* ─── Why Choose ─── */
+  .why { background: #fff; max-width: 100%; }
+  .why-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .why-card {
+    text-align: center; padding: 24px 16px; border-radius: 4px;
+    background: #faf7f4; transition: transform 0.3s;
+  }
+  .why-card:hover { transform: translateY(-4px); }
+  .why-card .icon { font-size: 28px; margin-bottom: 10px; }
+  .why-card h5 { font-size: 16px; color: #4a2c2a; margin-bottom: 4px; font-weight: 600; }
+  .why-card p { font-size: 12px; color: #6b4f4d; line-height: 1.7; }
+  .why-card .num { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #bc987e; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+
+  /* ─── Bridal ─── */
+  .bridal { max-width: 100%; background: #fff; }
+  .bridal-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .bridal-image { border-radius: 4px; overflow: hidden; background: #efe9e3; }
+  .bridal-image img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+  .bridal-services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .bridal-services .item { font-size: 14px; color: #4a2c2a; padding: 8px 0; border-bottom: 1px solid rgba(188,152,126,0.1); }
+  .bridal-services .item::before { content: "✦ "; color: #bc987e; }
+
+  /* ─── Gallery ─── */
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+  .gallery-item {
+    aspect-ratio: 1; border-radius: 4px;
+    background-size: cover; background-position: center; position: relative; overflow: hidden;
+    cursor: pointer; transition: transform 0.4s;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item.tall { grid-row: span 2; }
+  .gallery-item .overlay {
+    position: absolute; inset: 0; background: rgba(74,44,42,0.6);
+    backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .gallery-item:hover .overlay { opacity: 1; }
+  .gallery-item .overlay a { color: #fff; text-decoration: none; padding: 10px 24px; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px; font-size: 11px; letter-spacing: 2px; }
+  .gallery-item .category-label {
+    position: absolute; bottom: 14px; right: 14px; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #fff; background: rgba(74,44,42,0.4); padding: 4px 12px; border-radius: 2px;
+  }
+  .gallery-item .insta-icon {
+    position: absolute; top: 12px; left: 12px; width: 20px; height: 20px;
+    background: rgba(255,255,255,0.15); border-radius: 5px;
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+
+  /* ─── Testimonials ─── */
+  #testimonials { background: #fff; max-width: 100%; }
+  .testimonials-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .testimonial-card { background: #faf7f4; border-radius: 4px; padding: 24px; transition: transform 0.3s; }
+  .testimonial-card:hover { transform: translateY(-4px); }
+  .stars { font-size: 14px; color: #bc987e; margin-bottom: 8px; }
+  .testimonial-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #4a2c2a; font-style: italic; line-height: 1.7; margin-bottom: 12px; }
+  .testimonial-card .author { font-size: 12px; color: #6b4f4d; font-weight: 500; }
+
+  /* ─── Contact ─── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+  .contact-info .item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+  .contact-info .icon-box { width: 40px; height: 40px; border-radius: 50%; background: #f5ede6; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+  .contact-info h5 { font-size: 16px; color: #4a2c2a; margin-bottom: 2px; }
+  .contact-info p { font-size: 14px; color: #6b4f4d; line-height: 1.7; }
+  .contact-info a { color: #bc987e; text-decoration: none; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%; padding: 12px 16px; margin-bottom: 14px;
+    font-family: 'Cairo', 'Jost', sans-serif; font-size: 14px; text-align: right;
+    border: 1px solid rgba(188,152,126,0.2); border-radius: 3px;
+    background: #faf7f4; color: #4a2c2a;
+  }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: #bc987e; }
+  .contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ─── Footer ─── */
+  footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(188,152,126,0.12); }
+  footer .footer-logo { margin-bottom: 12px; }
+  footer .social { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+  footer .social a { color: #bc987e; text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+  footer .social a:hover { color: #a8856c; }
+  footer .copy { font-size: 12px; color: #6b4f4d; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    nav .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(252,248,245,0.98); padding: 24px 40px; gap: 20px; border-bottom: 1px solid rgba(188,152,126,0.15); }
+    nav .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    nav .nav-links { margin-right: 0; }
+    section { padding: 60px 20px; }
+    .about-inner, .why-inner, .testimonials-inner { padding: 60px 20px; }
+    .about-grid, .bridal-inner, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-form .row { grid-template-columns: 1fr; }
+    .bridal-services { grid-template-columns: 1fr; }
+    .nav-blog-link { display: none; }
+  }
+  @media (max-width: 600px) {
+    body { overflow-x: hidden; }
+    nav { padding: 0 16px; height: 60px; }
+    nav .nav-links { top: 60px; }
+    .logo-icon { width: 40px; height: 40px; }
+    .hero-content .hero-logo img { width: 180px !important; }
+    .hero-content h1 { font-size: 28px; }
+    .hero-content .tagline { font-size: 10px; }
+    section { padding: 40px 16px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 12px; }
+    .gallery-grid { grid-template-columns: 1fr; gap: 8px; }
+    .section-title { font-size: 26px; }
+    .btn-outline { margin-right: 0; margin-top: 10px; }
+    .bridal-image img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Navigation ─── -->
+<nav>
+  <a href="#home" class="logo">
+    <div class="logo-icon"><img src="images/logo.png" alt="KUMI Beauty Salon"></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">الرئيسية</a></li>
+    <li><a href="#about">عن الصالون</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#bridal">العروس</a></li>
+    <li><a href="#gallery">معرض الأعمال</a></li>
+    <li><a href="#testimonials">آراء العملاء</a></li>
+    <li><a href="kumi-beauty-team.html">فريق العمل</a></li>
+    <li><a href="#contact">اتصل بنا</a></li>
+  </ul>
+  <a href="kumi-beauty-blog.html" class="nav-blog-link">المدونة</a>
+  <a href="kumi-beauty-salon.html" class="nav-lang-link">English</a>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="subtitle">مرحباً بك في</div>
+    <div class="hero-logo"><img src="images/logo.png" alt="KUMI Beauty Salon"></div>
+    <div class="tagline">الجمال &middot; الأناقة &middot; الثقة</div>
+    <p class="hero-desc">كل امرأة تستحق أن تشعر بالجمال والثقة. استمتعي بأرقى خدمات التجميل في بيئة راقية ومريحة.</p>
+    <div>
+      <a href="#contact" class="btn">احجزي موعدك</a>
+      <a href="#services" class="btn btn-outline">خدماتنا</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">لمزيد</div>
+</section>
+
+<!-- ─── About ─── -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="text-center">
+      <div class="section-label">عن الصالون</div>
+      <h2 class="section-title">مرحباً بك في صالون كومي</h2>
+      <p class="section-desc mx-auto">نحن نكرس أنفسنا لتعزيز جمالك الطبيعي من خلال عناية احترافية وعلاجات مخصصة في قلب الدوحة.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image"><img src="images/about.jpg" alt="صالون كومي للتجميل"></div>
+      <div class="about-text">
+        <p>صالون كومي للتجميل هو وجهتك المثالية للعناية بجمالك في الدوحة، قطر. نقدم مجموعة متكاملة من خدمات التجميل بأعلى معايير الجودة والاحترافية.</p>
+        <p>فريقنا من الخبيرات المؤهلات يستخدم أفضل المنتجات والتقنيات الحديثة لضمان حصولك على إطلالة مشرقة وتجربة لا تُنسى.</p>
+        <a href="#services" class="btn">اكتشفي خدماتنا</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Services ─── -->
+<section id="services">
+  <div class="text-center">
+    <div class="section-label">خدماتنا</div>
+    <h2 class="section-title">علاجات تجميل راقية</h2>
+    <p class="section-desc mx-auto">مجموعة متكاملة من العلاجات التجميلية: العناية بالشعر والبشرة، المساج، والمكياج.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <h4>خدمات الشعر</h4>
+      <div class="price">من 150 ريال</div>
+      <p>قص وتصفيف وصبغ وعلاجات الكيراتين والعناية بفروة الرأس لجميع أنواع الشعر.</p>
+    </div>
+    <div class="service-card">
+      <h4>العناية بالأظافر</h4>
+      <div class="price">من 80 ريال</div>
+      <p>مانيكير وباديكير وجل وأكريليك ورسم الأظافر وعلاجات البارافين.</p>
+    </div>
+    <div class="service-card">
+      <h4>العناية بالبشرة</h4>
+      <div class="price">من 200 ريال</div>
+      <p>تنظيف عميق وترطيب ومكافحة الشيخوخة وتقشير كيميائي وميكروديرمابريشن.</p>
+    </div>
+    <div class="service-card">
+      <h4>المكياج والرموش</h4>
+      <div class="price">من 180 ريال</div>
+      <p>مكياج احترافي وتركيب رموش ورفع الرموش وتشكيل الحواجب.</p>
+    </div>
+    <div class="service-card">
+      <h4>إزالة الشعر</h4>
+      <div class="price">من 60 ريال</div>
+      <p>شمع وخيط وسكري وإزالة شعر بالليزر للوجه والجسم.</p>
+    </div>
+    <div class="service-card">
+      <h4>المساج والعافية</h4>
+      <div class="price">من 250 ريال</div>
+      <p>مساج سويدي وعميق وأحجار ساخنة وعلاجات الجسم والعناية بالعضلات.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Why Choose ─── -->
+<section class="why">
+  <div class="why-inner">
+    <div class="text-center">
+      <div class="section-label">لماذا نحن</div>
+      <h2 class="section-title">مميزات كومي</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="num">01</div><h5>فريق محترف</h5><p>خبيرات معتمدات وذوات خبرة وشغف بفن التجميل</p></div>
+      <div class="why-card"><div class="num">02</div><h5>منتجات راقية</h5><p>أفضل الماركات العالمية لنتائج آمنة وفعالة</p></div>
+      <div class="why-card"><div class="num">03</div><h5>بيئة معقمة</h5><p>أدوات معقمة ومرافق نظيفة على أعلى مستوى</p></div>
+      <div class="why-card"><div class="num">04</div><h5>أجواء مريحة</h5><p>مساحة هادئة وأنيقة للاسترخاء والتجدد</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Bridal ─── -->
+<section class="bridal" id="bridal">
+  <div class="bridal-inner">
+    <div class="bridal-image"><img src="images/bridal.jpg" alt="عروس"></div>
+    <div>
+      <div class="section-label">جمال العروس</div>
+      <h2 class="section-title">إطلالتكِ الأجمل في يوم زفافك</h2>
+      <p style="font-size:15px;color:#6b4f4d;line-height:1.8;margin-bottom:16px;">دعِي خبيرات التجميل لدينا يصممن لك إطلالة أحلامك بأناقة ورقي.</p>
+      <div class="bridal-services">
+        <div class="item">مكياج عروس</div>
+        <div class="item">تسريحة شعر</div>
+        <div class="item">عناية بالبشرة للعروس</div>
+        <div class="item">باقة العروس المتكاملة</div>
+        <div class="item">تجربة مكياج</div>
+        <div class="item">عناية بالأظافر</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Gallery ─── -->
+<section id="gallery">
+  <div class="text-center">
+    <div class="section-label">معرض الأعمال</div>
+    <h2 class="section-title">أعمالنا</h2>
+    <p class="section-desc mx-auto">
+      تابعونا على إنستغرام <a href="https://www.instagram.com/kumibeautydoha/" target="_blank" style="color:#bc987e;text-decoration:none;font-weight:500;">@kumibeautydoha</a>
+    </p>
+  </div>
+  <div class="gallery-grid" id="instagram-feed">
+    <div class="gallery-item loading" data-category="شعر" style="background-image:url('images/gallery-hair.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">شعر</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item tall loading" data-category="رموش" style="background-image:url('images/gallery-lashes.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">رموش</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item loading" data-category="تقشير" style="background-image:url('images/gallery-skin-scrub.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">تقشير</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item loading" data-category="أظافر" style="background-image:url('images/gallery-nails.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">أظافر</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item loading" data-category="بشرة" style="background-image:url('images/gallery-facial.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">بشرة</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item loading" data-category="مساج" style="background-image:url('images/gallery-massage.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">مساج</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item loading" data-category="صالون" style="background-image:url('images/gallery-salon.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">صالون</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+    <div class="gallery-item tall loading" data-category="عافية" style="background-image:url('images/gallery-wellness.jpg');background-size:cover;background-position:center;">
+      <span class="category-label">عافية</span>
+      <span class="insta-icon">&#9812;</span>
+      <div class="overlay"><a href="https://www.instagram.com/kumibeautydoha/" target="_blank">عرض على إنستغرام</a></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <a href="https://www.instagram.com/kumibeautydoha/" target="_blank" class="btn" style="background:transparent;border:1px solid #bc987e;color:#bc987e;">
+      &#8250; تابع @kumibeautydoha
+    </a>
+  </div>
+</section>
+
+<!-- ─── Testimonials ─── -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="text-center">
+      <div class="section-label">آراء العملاء</div>
+      <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>فريق محترف وخدمة رائعة. أخرج من الصالون وأنا أشعر بالانتعاش والجمال.</blockquote>
+        <div class="author">— سارة أ.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>صالوني المفضل في الدوحة للشعر والأظافر والعناية بالبشرة.</blockquote>
+        <div class="author">— نورة ه.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>مكياج أعراس ممتاز وأجواء ودودة. أنصح الجميع بتجربته.</blockquote>
+        <div class="author">— عائشة م.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Contact ─── -->
+<section id="contact">
+  <div class="text-center">
+    <div class="section-label">اتصلي بنا</div>
+    <h2 class="section-title">احجزي موعدك</h2>
+    <p class="section-desc mx-auto">استمتعي بتجربة الجمال والاسترخاء والثقة في صالون كومي.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="item">
+        <div class="icon-box">&#9906;</div>
+        <div>
+          <h5>الموقع</h5>
+          <p><a href="https://maps.app.goo.gl/kdjsueYDVzAkHh3d9?g_st=iw" target="_blank">مجمع المرقاب، الطابق الأول، مكتب 20<br>الدوحة، قطر</a></p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="icon-box">&#9742;</div>
+        <div>
+          <h5>الهاتف</h5>
+          <p>+974 6000 1954</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="icon-box">&#9992;</div>
+        <div>
+          <h5>ساعات العمل</h5>
+          <p>السبت – الخميس: 11:00 صباحاً – 10:00 مساءً<br>الجمعة: 2:00 مساءً – 10:00 مساءً</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" id="bookingForm">
+      <div class="row">
+        <input type="text" id="custName" placeholder="الاسم" required>
+        <input type="tel" id="custPhone" placeholder="رقم الهاتف" required>
+      </div>
+      <select id="custService" required>
+        <option value="">اختاري الخدمة</option>
+        <option>خدمات الشعر</option>
+        <option>العناية بالأظافر</option>
+        <option>العناية بالبشرة</option>
+        <option>المكياج والرموش</option>
+        <option>إزالة الشعر</option>
+        <option>المساج والعافية</option>
+        <option>باقة العروس</option>
+      </select>
+      <input type="date" id="custDate" required>
+      <textarea id="custNotes" rows="2" placeholder="ملاحظات أو الوقت المناسب"></textarea>
+      <button type="button" class="btn" onclick="bookAppointment()">احجزي عبر واتساب</button>
+      <div id="confirmationBox" style="display:none;margin-top:10px"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer>
+  <div class="footer-logo">
+    <img src="images/logo.png" alt="KUMI" style="height:40px;">
+  </div>
+  <div class="social">
+    <a href="https://www.instagram.com/kumibeautydoha/" target="_blank">إنستغرام</a>
+    <a href="https://www.facebook.com/profile.php?id=61553049604560" target="_blank">فيسبوك</a>
+    <a href="https://wa.me/97460001954" target="_blank">واتساب</a>
+  </div>
+  <p class="copy">&copy; 2026 صالون كومي للتجميل &mdash; الدوحة، قطر. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(function(link){
+  link.addEventListener('click',function(){
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+function bookAppointment(){
+  var name=document.getElementById('custName').value.trim();
+  var phone=document.getElementById('custPhone').value.trim();
+  var service=document.getElementById('custService').value;
+  var date=document.getElementById('custDate').value;
+  var notes=document.getElementById('custNotes').value.trim();
+  if(!name||!phone||!service||!date){alert('الرجاء تعبئة جميع الحقول المطلوبة.');return}
+  var msg='مرحباً صالون كومي،%0A%0Aأود حجز موعد:%0A%0A';
+  msg+='الاسم: '+name+'%0A';
+  msg+='الهاتف: '+phone+'%0A';
+  msg+='الخدمة: '+service+'%0A';
+  msg+='التاريخ: '+date+'%0A';
+  if(notes)msg+='ملاحظات: '+notes+'%0A';
+  window.open('https://wa.me/97460001954?text='+msg,'_blank');
+  var box=document.getElementById('confirmationBox');
+  box.style.display='block';
+  box.innerHTML='<a href="https://wa.me/'+phone.replace(/[^0-9]/g,'')+'?text=مرحباً+'+encodeURIComponent(name)+'،+تم+تأكيد+حجزك+في+صالون+كومي+للتجميل!+نتطلع+للقائك." target="_blank" class="btn" style="display:inline-block;width:auto;padding:10px 20px;font-size:10px;background:transparent;border:1px solid #bc987e;color:#bc987e;">إرسال تأكيد إلى '+phone+'</a>';
+}
+</script>
+</body>
+</html>

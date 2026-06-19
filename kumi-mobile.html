@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>KUMI Beauty Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+img{max-width:100%;height:auto;display:block}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Jost',sans-serif;
+  color:#4a2c2a;
+  background:#faf7f4;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── Nav ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;height:56px;
+  background:rgba(250,247,244,0.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(188,152,126,0.15);
+}
+nav .logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-icon{width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.logo-icon img{width:100%;height:100%;object-fit:contain}
+.hamburger{
+  display:flex;flex-direction:column;gap:4px;cursor:pointer;
+  background:none;border:none;padding:4px;z-index:101;
+}
+.hamburger span{display:block;width:24px;height:2px;background:#4a2c2a;border-radius:2px}
+.nav-links{
+  display:none;position:fixed;top:70px;right:0;width:260px;
+  flex-direction:column;gap:0;z-index:99;
+  background:#fff;border-radius:0 0 0 12px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.1);
+  padding:16px 0;
+}
+.nav-links.open{display:flex}
+.nav-links a{
+  font-size:14px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;text-decoration:none;color:#4a2c2a;
+  padding:14px 24px;border-bottom:1px solid rgba(188,152,126,0.08);
+  transition:background 0.2s;
+}
+.nav-links a:last-child{border-bottom:none}
+.nav-links a:hover,.nav-links a.active{background:#f5ede6;color:#bc987e}
+.nav-lang-link{
+  font-size:12px;font-weight:500;text-decoration:none;color:#4a2c2a;
+  padding:6px 12px;border-radius:3px;
+  border:1px solid rgba(188,152,126,0.3);margin-left:8px;
+  transition:background 0.2s;
+}
+.nav-lang-link:hover{background:#f5ede6}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:98;background:rgba(0,0,0,0.2)}
+.nav-overlay.open{display:block}
+
+/* ─── Hero ─── */
+.hero{
+  margin-top:56px;padding:40px 16px;text-align:center;
+  background:linear-gradient(135deg,#faf7f4 0%,#f5ede6 100%);
+}
+.hero .subtitle{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#bc987e;margin-bottom:8px}
+.hero .logo-main{margin:12px auto}
+.hero .logo-main img{width:200px;margin:0 auto}
+.hero .tagline{font-size:12px;letter-spacing:3px;color:#6b4f4d;margin:8px 0 16px}
+.hero .hero-desc{font-size:14px;color:#6b4f4d;line-height:1.7;margin-bottom:20px;padding:0 10px}
+.hero .btns{display:flex;flex-direction:column;gap:10px;align-items:center}
+.btn{
+  display:inline-block;padding:12px 32px;
+  font-size:11px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;text-decoration:none;border-radius:3px;
+  background:#bc987e;color:#fff;border:none;cursor:pointer;text-align:center;
+  transition:background 0.3s;width:100%;max-width:280px;
+}
+.btn-outline{background:transparent;border:1px solid #bc987e;color:#bc987e}
+
+/* ─── Sections ─── */
+section{padding:36px 16px}
+.section-label{
+  font-size:10px;font-weight:500;letter-spacing:3px;
+  text-transform:uppercase;color:#bc987e;margin-bottom:8px;text-align:center;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:600;text-align:center;color:#4a2c2a;line-height:1.2;margin-bottom:8px;
+}
+.section-desc{
+  font-size:14px;font-weight:300;color:#6b4f4d;text-align:center;line-height:1.7;margin-bottom:24px;
+}
+
+/* ─── About ─── */
+.about{background:#fff}
+.about-grid{display:flex;flex-direction:column;gap:20px}
+.about-image{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#efe9e3}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-text p{font-size:14px;color:#6b4f4d;line-height:1.8;margin-bottom:12px}
+
+/* ─── Services ─── */
+.services-grid{display:flex;flex-direction:column;gap:10px}
+.service-card{
+  background:#fff;border-radius:4px;padding:16px;
+  box-shadow:0 1px 6px rgba(74,44,42,0.06);
+}
+.service-card h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:#4a2c2a;margin-bottom:4px}
+.service-card .price{font-size:12px;color:#bc987e;font-weight:500;margin-bottom:6px}
+.service-card p{font-size:13px;color:#6b4f4d;line-height:1.6}
+
+/* ─── Why Choose ─── */
+.why-grid{display:flex;flex-direction:column;gap:10px}
+.why-card{
+  background:#fff;border-radius:4px;padding:14px 16px;
+  display:flex;align-items:center;gap:14px;
+  box-shadow:0 1px 6px rgba(74,44,42,0.06);
+}
+.why-card .icon{width:36px;height:36px;border-radius:50%;background:#f5ede6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.why-card h5{font-family:'Cormorant Garamond',serif;font-size:16px;margin-bottom:1px}
+.why-card p{font-size:12px;color:#6b4f4d}
+
+/* ─── Gallery ─── */
+.gallery-grid{display:flex;flex-direction:column;gap:8px}
+.gallery-item{
+  width:100%;aspect-ratio:1;border-radius:4px;
+  position:relative;overflow:hidden;background:#efe9e3;
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.gallery-item.tall{aspect-ratio:3/4}
+.gallery-item .label{
+  position:absolute;bottom:10px;left:10px;
+  font-size:10px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;color:#fff;
+  background:rgba(74,44,42,0.5);padding:4px 10px;border-radius:2px;
+}
+.gallery-cta{text-align:center;margin-top:16px}
+
+/* ─── Bridal ─── */
+.bridal{background:#fff}
+.bridal-inner{display:flex;flex-direction:column;gap:20px}
+.bridal-image{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#efe9e3}
+.bridal-image img{width:100%;height:100%;object-fit:cover}
+.bridal-services{display:flex;flex-direction:column;gap:6px}
+.bridal-services .item{font-size:14px;color:#4a2c2a;padding:6px 0;border-bottom:1px solid rgba(188,152,126,0.1)}
+.bridal-services .item::before{content:"✦ ";color:#bc987e}
+
+/* ─── Testimonials ─── */
+.testimonial-card{
+  background:#fff;border-radius:4px;padding:16px;margin-bottom:12px;
+  box-shadow:0 1px 6px rgba(74,44,42,0.06);
+}
+.stars{font-size:14px;color:#bc987e;margin-bottom:4px}
+.testimonial-card blockquote{font-family:'Cormorant Garamond',serif;font-size:17px;color:#4a2c2a;font-style:italic;line-height:1.6}
+.testimonial-card .author{font-size:11px;color:#6b4f4d;margin-top:8px;font-weight:500}
+
+/* ─── Contact ─── */
+.contact{background:#fff}
+.contact-info{margin-bottom:20px}
+.contact-info .item{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.contact-info .icon-box{width:36px;height:36px;border-radius:50%;background:#f5ede6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.contact-info h5{font-family:'Cormorant Garamond',serif;font-size:16px;margin-bottom:2px}
+.contact-info p{font-size:13px;color:#6b4f4d}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;padding:12px;margin-bottom:10px;
+  font-family:'Jost',sans-serif;font-size:14px;
+  border:1px solid rgba(188,152,126,0.2);border-radius:3px;
+  background:#faf7f4;color:#4a2c2a;
+}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:#bc987e}
+
+/* ─── Footer ─── */
+footer{
+  padding:20px 16px;text-align:center;
+  border-top:1px solid rgba(188,152,126,0.12);
+  font-size:11px;color:#6b4f4d;
+}
+footer .social{display:flex;justify-content:center;gap:12px;margin-top:8px}
+footer .social a{color:#bc987e;text-decoration:none;font-weight:500;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+footer .social a:hover{color:#a8856c}
+
+/* ─── Team Section (inline) ─── */
+.team-grid{display:flex;flex-direction:column;gap:12px}
+.team-card{
+  display:flex;align-items:center;gap:14px;
+  background:#fff;border-radius:4px;padding:12px;
+  box-shadow:0 1px 6px rgba(74,44,42,0.06);
+}
+.team-card .photo{width:70px;height:70px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#efe9e3}
+.team-card .photo img{width:100%;height:100%;object-fit:cover}
+.team-card .info h3{font-family:'Cormorant Garamond',serif;font-size:16px}
+.team-card .info .role{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#bc987e}
+.team-card .info .bio{font-size:12px;color:#6b4f4d;margin-top:2px}
+
+/* ─── Pages nav ─── */
+.pages-nav{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.pages-nav a{
+  font-size:10px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;text-decoration:none;
+  padding:8px 16px;border-radius:3px;
+  background:#fff;color:#4a2c2a;border:1px solid rgba(188,152,126,0.2);
+}
+.pages-nav a.active{background:#bc987e;color:#fff;border-color:#bc987e}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#home" class="logo">
+    <div class="logo-icon"><img src="images/logo.png" alt="KUMI"></div>
+  </a>
+  <a href="kumi-mobile-ar.html" class="nav-lang-link">عربي</a>
+  <div class="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links" id="navLinks" onclick="toggleNav()">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="kumi-beauty-blog.html">Blog</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="subtitle">Welcome to</div>
+  <div class="logo-main"><img src="images/logo.png" alt="KUMI Beauty Salon"></div>
+  <div class="tagline">Beauty &middot; Elegance &middot; Confidence</div>
+  <p class="hero-desc">Every woman deserves to feel beautiful, confident, and pampered.</p>
+  <div class="btns">
+    <a href="#contact" class="btn">Book Appointment</a>
+    <a href="#services" class="btn btn-outline">Our Services</a>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Welcome to KUMI</h2>
+  <div class="about-grid">
+    <div class="about-image"><img src="images/about.jpg" alt="KUMI Beauty Salon"></div>
+    <div class="about-text">
+      <p>KUMI Beauty Salon is dedicated to enhancing natural beauty through professional care and personalized treatments in Doha, Qatar.</p>
+      <p>Our team of skilled professionals uses premium products and the latest techniques to ensure you leave feeling refreshed, confident, and beautiful.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="section-label">Our Services</div>
+  <h2 class="section-title">Premium Beauty Treatments</h2>
+  <p class="section-desc">A complete range of treatments from hair and skincare to massage and bridal packages.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <h4>Hair Services</h4>
+      <div class="price">From QAR 150</div>
+      <p>Cuts, styling, coloring, highlights, keratin treatments, and scalp therapies for all hair types.</p>
+    </div>
+    <div class="service-card">
+      <h4>Nail Care</h4>
+      <div class="price">From QAR 80</div>
+      <p>Manicure, pedicure, gel polish, acrylic extensions, nail art, and paraffin wax treatments.</p>
+    </div>
+    <div class="service-card">
+      <h4>Facial &amp; Skin Care</h4>
+      <div class="price">From QAR 200</div>
+      <p>Deep cleansing, hydrating, anti-aging, brightening facials, microdermabrasion, and chemical peels.</p>
+    </div>
+    <div class="service-card">
+      <h4>Makeup &amp; Lashes</h4>
+      <div class="price">From QAR 180</div>
+      <p>Professional makeup, lash extensions, lash lifts, brow shaping, and brow lamination.</p>
+    </div>
+    <div class="service-card">
+      <h4>Hair Removal</h4>
+      <div class="price">From QAR 60</div>
+      <p>Waxing, threading, sugaring, and laser hair removal for face and body.</p>
+    </div>
+    <div class="service-card">
+      <h4>Massage &amp; Wellness</h4>
+      <div class="price">From QAR 250</div>
+      <p>Swedish, deep tissue, hot stone, aromatherapy massage, body wraps, and scrubs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose -->
+<section style="background:#fff" id="why">
+  <div class="section-label">Why Choose Us</div>
+  <h2 class="section-title">The KUMI Difference</h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="icon">&#10003;</div><div><h5>Professional Team</h5><p>Certified, experienced, and passionate about beauty</p></div></div>
+    <div class="why-card"><div class="icon">&#10003;</div><div><h5>Premium Products</h5><p>Only top-tier brands for safe, visible results</p></div></div>
+    <div class="why-card"><div class="icon">&#10003;</div><div><h5>Hygienic Environment</h5><p>Sterilized tools and spotless facilities</p></div></div>
+    <div class="why-card"><div class="icon">&#10003;</div><div><h5>Relaxing Ambience</h5><p>Calm, elegant space to unwind and recharge</p></div></div>
+    <div class="why-card"><div class="icon">&#10003;</div><div><h5>Personalized Care</h5><p>Every treatment tailored to your unique needs</p></div></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <div class="section-label">Gallery</div>
+  <h2 class="section-title">Our Work</h2>
+  <p class="section-desc">Follow us on Instagram <a href="https://www.instagram.com/kumibeautydoha/" target="_blank" style="color:#bc987e;text-decoration:none;font-weight:500;">@kumibeautydoha</a></p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="images/gallery-hair.jpg" alt="Hair"><span class="label">Hair</span></div>
+    <div class="gallery-item tall"><img src="images/gallery-lashes.jpg" alt="Lashes"><span class="label">Lashes</span></div>
+    <div class="gallery-item"><img src="images/gallery-skin-scrub.jpg" alt="Skin Scrub"><span class="label">Skin Scrub</span></div>
+    <div class="gallery-item"><img src="images/gallery-nails.jpg" alt="Nails"><span class="label">Nails</span></div>
+    <div class="gallery-item"><img src="images/gallery-facial.jpg" alt="Facial"><span class="label">Facial</span></div>
+    <div class="gallery-item"><img src="images/gallery-massage.jpg" alt="Massage"><span class="label">Massage</span></div>
+    <div class="gallery-item"><img src="images/gallery-salon.jpg" alt="Salon"><span class="label">Salon</span></div>
+    <div class="gallery-item tall"><img src="images/gallery-wellness.jpg" alt="Wellness"><span class="label">Wellness</span></div>
+  </div>
+  <div class="gallery-cta">
+    <a href="https://www.instagram.com/kumibeautydoha/" target="_blank" class="btn btn-outline" style="display:inline-block;width:auto;padding:10px 24px">&#8250; Follow @kumibeautydoha</a>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="section-label">Testimonials</div>
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="testimonial-card">
+    <div class="stars">★★★★★</div>
+    <blockquote>Professional staff and amazing service. I always leave feeling refreshed and beautiful.</blockquote>
+    <div class="author">— Sara A.</div>
+  </div>
+  <div class="testimonial-card">
+    <div class="stars">★★★★★</div>
+    <blockquote>My go-to salon in Doha for hair, nails, and skincare.</blockquote>
+    <div class="author">— Noora H.</div>
+  </div>
+  <div class="testimonial-card">
+    <div class="stars">★★★★★</div>
+    <blockquote>Excellent bridal makeup and friendly atmosphere.</blockquote>
+    <div class="author">— Aisha M.</div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Book Your Appointment</h2>
+  <div class="contact-info">
+    <div class="item"><div class="icon-box">&#9906;</div><div><h5>Location</h5><p><a href="https://maps.app.goo.gl/kdjsueYDVzAkHh3d9?g_st=iw" target="_blank" style="color:#6b4f4d;text-decoration:none">Al Mirqab Complex, 1st Floor, Office 20<br>Doha, Qatar</a></p></div></div>
+    <div class="item"><div class="icon-box">&#9742;</div><div><h5>Phone</h5><p>+974 6000 1954</p></div></div>
+    <div class="item"><div class="icon-box">&#9992;</div><div><h5>Hours</h5><p>Sat–Thu: 11 AM – 10 PM<br>Fri: 2 PM – 10 PM</p></div></div>
+  </div>
+  <form class="contact-form" id="bookingForm">
+    <input type="text" id="custName" placeholder="Your Name" required>
+    <input type="tel" id="custPhone" placeholder="Phone Number" required>
+    <select id="custService" required>
+      <option value="">Select Service</option>
+      <option>Hair Services</option>
+      <option>Nail Care</option>
+      <option>Facial &amp; Skin Care</option>
+      <option>Makeup &amp; Lashes</option>
+      <option>Hair Removal</option>
+      <option>Massage &amp; Wellness</option>
+      <option>Bridal Package</option>
+    </select>
+    <input type="date" id="custDate" required>
+    <textarea id="custNotes" rows="2" placeholder="Special requests or preferred time"></textarea>
+    <button type="button" class="btn" onclick="bookAppointment()">Book via WhatsApp</button>
+    <div id="confirmationBox" style="display:none;margin-top:10px"></div>
+  </form>
+  <div class="pages-nav" style="margin-top:20px">
+    <a href="#home" class="active">Home</a>
+    <a href="kumi-beauty-team.html">Team</a>
+    <a href="kumi-beauty-blog.html">Blog</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 KUMI Beauty Salon &mdash; Doha, Qatar</p>
+  <div class="social">
+    <a href="https://www.instagram.com/kumibeautydoha/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61553049604560" target="_blank">Facebook</a>
+    <a href="https://wa.me/97460001954" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('navOverlay').classList.toggle('open');
+}
+function bookAppointment(){
+  var name=document.getElementById('custName').value.trim();
+  var phone=document.getElementById('custPhone').value.trim();
+  var service=document.getElementById('custService').value;
+  var date=document.getElementById('custDate').value;
+  var notes=document.getElementById('custNotes').value.trim();
+  if(!name||!phone||!service||!date){alert('Please fill in all required fields.');return}
+  var msg='Hello KUMI Beauty Salon,%0A%0AI would like to book an appointment:%0A%0A';
+  msg+='Name: '+name+'%0A';
+  msg+='Phone: '+phone+'%0A';
+  msg+='Service: '+service+'%0A';
+  msg+='Date: '+date+'%0A';
+  if(notes)msg+='Notes: '+notes+'%0A';
+  window.open('https://wa.me/97460001954?text='+msg,'_blank');
+  var box=document.getElementById('confirmationBox');
+  box.style.display='block';
+  box.innerHTML='<a href="https://wa.me/'+phone.replace(/[^0-9]/g,'')+'?text=Hi+'+encodeURIComponent(name)+',+your+booking+at+KUMI+Beauty+Salon+is+confirmed!+We+look+forward+to+seeing+you." target="_blank" class="btn btn-outline" style="display:inline-block;width:auto;padding:10px 20px;font-size:10px">Send Confirmation to '+phone+'</a>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KUMI Beauty Salon — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    img { max-width: 100%; height: auto; }
+    body {
+      font-family: 'Jost', sans-serif;
+      color: #2c2c2c;
+      background: #fcf8f5;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(252, 248, 245, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(188, 152, 126, 0.15);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #4a2c2a;
+    }
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #4a2c2a;
+      line-height: 1;
+    }
+    .logo-text span {
+      color: #bc987e;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      margin-left: 60px;
+    }
+    nav .nav-links a {
+      color: #4a2c2a;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: #bc987e;
+    }
+    .nav-blog-link {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; text-decoration: none;
+      color: #fff; background: #bc987e;
+      padding: 8px 20px; border-radius: 3px;
+      transition: background 0.3s; margin-left: auto;
+    }
+    .nav-blog-link:hover { background: #a8856c; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 26px;
+      height: 1.5px;
+      background: #4a2c2a;
+    }
+
+    /* ─── Blog Header ─── */
+    .blog-header {
+      margin-top: 70px;
+      padding: 80px 40px 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #fcf8f5, #f5ede6);
+    }
+    .blog-header .section-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: #bc987e;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .blog-header h1 {
+      font-size: 48px;
+      color: #4a2c2a;
+      letter-spacing: 1px;
+    }
+    .blog-header p {
+      font-size: 15px;
+      color: rgba(74,44,42,0.6);
+      font-weight: 300;
+      max-width: 500px;
+      margin: 12px auto 0;
+    }
+
+    /* ─── Blog Layout ─── */
+    .blog-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+    }
+
+    /* ─── Posts ─── */
+    .blog-post {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(188,152,126,0.12);
+    }
+    .blog-post:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .blog-post .post-image {
+      width: 100%;
+      height: 260px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: rgba(74,44,42,0.3);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-post .post-meta {
+      display: flex;
+      gap: 20px;
+      font-size: 11px;
+      color: rgba(74,44,42,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    .blog-post .post-meta .category {
+      color: #bc987e;
+      font-weight: 500;
+    }
+    .blog-post h2 {
+      font-size: 28px;
+      color: #4a2c2a;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .blog-post h2 a {
+      color: inherit;
+    }
+    .blog-post h2 a:hover {
+      color: #bc987e;
+    }
+    .blog-post p {
+      font-size: 15px;
+      color: rgba(74,44,42,0.6);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .blog-post .read-more {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #bc987e;
+      transition: color 0.3s;
+    }
+    .blog-post .read-more:hover {
+      color: #a8846a;
+    }
+
+    /* ─── Sidebar ─── */
+    .sidebar .widget {
+      background: #fff;
+      border-radius: 4px;
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(188,152,126,0.08);
+    }
+    .sidebar .widget:last-child {
+      margin-bottom: 0;
+    }
+    .sidebar .widget h3 {
+      font-size: 18px;
+      color: #4a2c2a;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .sidebar .widget ul {
+      list-style: none;
+    }
+    .sidebar .widget ul li {
+      padding: 6px 0;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(74,44,42,0.55);
+      border-bottom: 1px solid rgba(188,152,126,0.06);
+      transition: color 0.3s;
+    }
+    .sidebar .widget ul li:last-child {
+      border-bottom: none;
+    }
+    .sidebar .widget ul li:hover {
+      color: #bc987e;
+    }
+    .sidebar .widget ul li a {
+      color: inherit;
+    }
+    .sidebar .widget .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .sidebar .widget .tag-cloud a {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #fcf8f5;
+      font-size: 11px;
+      color: rgba(74,44,42,0.5);
+      letter-spacing: 0.5px;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .sidebar .widget .tag-cloud a:hover {
+      background: #bc987e;
+      color: #fff;
+    }
+    .sidebar .cta-widget {
+      background: #4a2c2a;
+      color: #fff;
+      text-align: center;
+      padding: 36px 28px;
+    }
+    .sidebar .cta-widget h3 {
+      color: #fff;
+    }
+    .sidebar .cta-widget p {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+    }
+    .sidebar .cta-widget .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      background: #bc987e;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: background 0.3s;
+    }
+    .sidebar .cta-widget .btn:hover {
+      background: #a8846a;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #4a2c2a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 12px;
+      font-weight: 300;
+    }
+    footer a {
+      color: rgba(255,255,255,0.5);
+    }
+    footer a:hover {
+      color: #bc987e;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 860px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(252,248,245,0.98);
+        padding: 24px 40px;
+        gap: 18px;
+        border-bottom: 1px solid rgba(188,152,126,0.15);
+      }
+      nav .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-blog-link {
+        display: none;
+      }
+      .blog-header h1 {
+        font-size: 34px;
+      }
+    }
+    @media (max-width: 600px) {
+      body { overflow-x: hidden; }
+      nav { padding: 0 16px; height: 60px; }
+      nav .nav-links { top: 60px; margin-left: 0; }
+      .nav-blog-link { display: none; }
+      .logo-icon { width: 40px; height: 40px; }
+      section { padding: 30px 16px; }
+      .blog-header { padding: 20px 16px 10px; margin-top: 60px; }
+      .blog-header h1 { font-size: 26px; }
+      .blog-header .subtitle { font-size: 14px; }
+      .post { padding: 16px; }
+      .post-image { height: 180px; }
+      .post h2 { font-size: 18px; }
+      .sidebar { padding: 24px 16px; }
+      footer { padding: 16px; font-size: 11px; }
+      .post-meta { font-size: 10px; gap: 8px; flex-wrap: wrap; }
+    }
+
+    /* ─── Post detail (shown on expanded posts) ─── */
+    .post-content {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(188,152,126,0.1);
+    }
+    .post-content.open {
+      display: block;
+    }
+    .post-content h3 {
+      font-size: 20px;
+      color: #4a2c2a;
+      margin: 20px 0 8px;
+    }
+    .post-content p {
+      font-size: 15px;
+      color: rgba(74,44,42,0.6);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .post-content ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .post-content ul li {
+      font-size: 14px;
+      color: rgba(74,44,42,0.55);
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="kumi-beauty-salon.html" class="logo">
+      <div class="logo-icon">
+        <img src="images/logo.png" alt="KUMI Beauty Salon" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="kumi-beauty-salon.html">Home</a></li>
+      <li><a href="kumi-beauty-salon.html#about">About</a></li>
+      <li><a href="kumi-beauty-salon.html#services">Services</a></li>
+      <li><a href="kumi-beauty-team.html">Meet the Team</a></li>
+      <li><a href="kumi-beauty-salon.html#contact">Contact</a></li>
+    </ul>
+    <a href="kumi-beauty-blog.html" class="nav-blog-link" style="opacity:0.7;cursor:default;">Blog</a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ─── Header ─── -->
+  <div class="blog-header">
+    <div class="section-label">KUMI Journal</div>
+    <h1>Beauty &amp; Style Blog</h1>
+    <p>Tips, trends, and inspiration from the KUMI Beauty Salon team.</p>
+  </div>
+
+  <!-- ─── Blog Layout ─── -->
+  <div class="blog-container">
+
+    <!-- ─── Posts ─── -->
+    <div class="blog-posts">
+
+      <!-- Post 1 -->
+      <article class="blog-post">
+        <div class="post-image" style="background: none; overflow: hidden;">
+          <img src="images/blog-bridal.jpg" alt="Bridal Beauty" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="post-meta">
+          <span class="category">Bridal</span>
+          <span>June 2, 2026</span>
+          <span>5 min read</span>
+        </div>
+        <h2><a href="#" onclick="togglePost(event, this)">Your Complete Bridal Beauty Timeline</a></h2>
+        <p>
+          Planning your wedding beauty look? Here is a month-by-month guide to ensure you are radiant on your big day — from skincare prep to the final hair and makeup trial.
+        </p>
+        <div class="post-content" id="post1">
+          <h3>3 Months Before</h3>
+          <p>Start a consistent skincare routine. Book your first facial consultation and begin any restorative treatments. Finalize your wedding dress neckline to plan your hairstyle accordingly.</p>
+          <h3>1 Month Before</h3>
+          <p>Complete your trial makeup and hair session. Bring photos of your desired look. Begin using a brightening mask weekly. Schedule your brow shaping and lash lifts.</p>
+          <h3>1 Week Before</h3>
+          <p>Get a hydrating facial, finalize nail color, and avoid any new skincare products to prevent reactions. Hydrate and rest well.</p>
+          <h3>The Day Before</h3>
+          <p>Manicure, pedicure, eyebrow shaping, and a relaxing scalp massage. Pack your touch-up kit: lipstick, powder, blotting papers, and hair pins.</p>
+          <h3>Your Wedding Day</h3>
+          <p>Arrive with clean, moisturized skin. Trust your KUMI artist and enjoy every moment — you will look stunning.</p>
+          <p style="margin-top:12px;"><em>Book your bridal consultation at KUMI Beauty Salon for a personalized beauty timeline.</em></p>
+        </div>
+        <a href="#" class="read-more" onclick="togglePost(event, this)">Read More &rarr;</a>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="blog-post">
+        <div class="post-image" style="background: none; overflow: hidden;">
+          <img src="images/blog-skincare.jpg" alt="Skincare" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="post-meta">
+          <span class="category">Skincare</span>
+          <span>May 25, 2026</span>
+          <span>4 min read</span>
+        </div>
+        <h2><a href="#" onclick="togglePost(event, this)">The Ultimate Skincare Routine for Doha's Climate</a></h2>
+        <p>
+          Doha's heat, humidity, and air conditioning can take a toll on your skin. Discover the essential steps to keep your complexion healthy, hydrated, and glowing year-round.
+        </p>
+        <div class="post-content" id="post2">
+          <h3>Morning Routine</h3>
+          <ul>
+            <li><strong>Cleanse</strong> with a gentle gel-based cleanser</li>
+            <li><strong>Tone</strong> with a hydrating alcohol-free toner</li>
+            <li><strong>Vitamin C serum</strong> for brightness and protection</li>
+            <li><strong>Lightweight moisturizer</strong> suited for humid days</li>
+            <li><strong>SPF 50</strong> — non-negotiable even in urban shade</li>
+          </ul>
+          <h3>Evening Routine</h3>
+          <ul>
+            <li><strong>Double cleanse</strong> to remove sunscreen and buildup</li>
+            <li><strong>Exfoliate</strong> 2x per week with a gentle AHA/BHA</li>
+            <li><strong>Retinol</strong> (start with low strength) for renewal</li>
+            <li><strong>Rich night cream</strong> to restore moisture lost to AC</li>
+          </ul>
+          <h3>Weekly Treatments</h3>
+          <p>Visit KUMI for a deep-cleansing facial or hydrating mask session every 2–3 weeks. Our skin rejuvenation treatments are tailored to combat environmental stress and keep your glow intact.</p>
+        </div>
+        <a href="#" class="read-more" onclick="togglePost(event, this)">Read More &rarr;</a>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="blog-post">
+        <div class="post-image" style="background: none; overflow: hidden;">
+          <img src="images/blog-nail-art.jpg" alt="Nail Art" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="post-meta">
+          <span class="category">Nail Care</span>
+          <span>May 14, 2026</span>
+          <span>3 min read</span>
+        </div>
+        <h2><a href="#" onclick="togglePost(event, this)">5 Nail Art Trends Dominating 2026</a></h2>
+        <p>
+          From chrome finishes to micro-French tips — here are the nail trends our KUMI artists are loving right now for every occasion.
+        </p>
+        <div class="post-content" id="post3">
+          <ul>
+            <li><strong>Chrome &amp; Mirror Nails:</strong> Ultra-reflective metallic finishes in rose gold and silver are still reigning supreme.</li>
+            <li><strong>Micro-French Tips:</strong> A delicate, thin-line take on the classic French manicure — minimalist and elegant.</li>
+            <li><strong>3D Floral Art:</strong> Tiny sculpted flowers and pearls add texture and romance, perfect for bridal and party looks.</li>
+            <li><strong>Jelly Nails:</strong> Sheer, translucent colors with a glossy finish — subtle yet striking.</li>
+            <li><strong>Cat Eye Magnetic:</strong> Shimmering magnetic gel creates a captivating cat-eye effect in deep jewel tones.</li>
+          </ul>
+          <p>Visit KUMI Beauty Salon for professional gel polish and custom nail art by our expert technicians.</p>
+        </div>
+        <a href="#" class="read-more" onclick="togglePost(event, this)">Read More &rarr;</a>
+      </article>
+
+      <!-- Post 4 -->
+      <article class="blog-post">
+        <div class="post-image" style="background: none; overflow: hidden;">
+          <img src="images/blog-hair-care.jpg" alt="Hair Care" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="post-meta">
+          <span class="category">Hair</span>
+          <span>May 5, 2026</span>
+          <span>4 min read</span>
+        </div>
+        <h2><a href="#" onclick="togglePost(event, this)">Summer Hair Survival Guide</a></h2>
+        <p>
+          Humidity, sun exposure, and heat styling can leave hair dry and frizzy. Learn how to protect your hair and keep it silky smooth all summer long.
+        </p>
+        <div class="post-content" id="post4">
+          <h3>Hydrate from Within</h3>
+          <p>Use a sulfate-free shampoo and follow with a deep conditioner. A weekly hair mask or spa treatment at KUMI will restore lost moisture.</p>
+          <h3>Heat Protection Is a Must</h3>
+          <p>Always apply a heat protectant spray before blow-drying or styling. Lower your tool temperature and avoid repeated passes.</p>
+          <h3>Regular Trims</h3>
+          <p>Schedule a trim every 6–8 weeks to remove split ends and maintain shape. Our haircuts and styling services keep your look fresh and healthy.</p>
+          <h3>Treat Yourself to a Hair Spa</h3>
+          <p>KUMI's hair spa treatments include deep conditioning, scalp massage, and protein therapy — ideal for revitalizing sun-stressed hair.</p>
+        </div>
+        <a href="#" class="read-more" onclick="togglePost(event, this)">Read More &rarr;</a>
+      </article>
+
+    </div>
+
+    <!-- ─── Sidebar ─── -->
+    <aside class="sidebar">
+
+      <div class="widget">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Bridal Beauty</a></li>
+          <li><a href="#">Skincare</a></li>
+          <li><a href="#">Nail Care &amp; Art</a></li>
+          <li><a href="#">Hair Styling &amp; Care</a></li>
+          <li><a href="#">Makeup Tips</a></li>
+          <li><a href="#">Wellness &amp; Massage</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3>Recent Posts</h3>
+        <ul>
+          <li><a href="#">Your Complete Bridal Beauty Timeline</a></li>
+          <li><a href="#">Skincare Routine for Doha's Climate</a></li>
+          <li><a href="#">5 Nail Art Trends of 2026</a></li>
+          <li><a href="#">Summer Hair Survival Guide</a></li>
+          <li><a href="#">The Benefits of Hot Stone Therapy</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3>Tags</h3>
+        <div class="tag-cloud">
+          <a href="#">Bridal</a>
+          <a href="#">Skincare</a>
+          <a href="#">Nails</a>
+          <a href="#">Hair</a>
+          <a href="#">Makeup</a>
+          <a href="#">Massage</a>
+          <a href="#">Wellness</a>
+          <a href="#">Doha</a>
+          <a href="#">Beauty Tips</a>
+        </div>
+      </div>
+
+      <div class="widget" style="background:linear-gradient(135deg,#f5ede6,#efe3d9);">
+        <h3>Follow Us on Instagram</h3>
+        <p style="font-size:13px;color:rgba(74,44,42,0.55);font-weight:300;">See our latest transformations, behind-the-scenes, and beauty inspiration.</p>
+        <div style="text-align:center;margin-top:12px;">
+          <a href="https://www.instagram.com/kumibeautydoha/" target="_blank" style="display:inline-block;padding:10px 28px;background:#bc987e;color:#fff;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:3px;text-decoration:none;">@kumibeautydoha</a>
+        </div>
+      </div>
+
+      <div class="widget cta-widget">
+        <h3>Book Your Visit</h3>
+        <p>Ready to experience KUMI Beauty Salon? Schedule your appointment today.</p>
+        <a href="kumi-beauty-salon.html#contact" class="btn">Book Now</a>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <p>&copy; 2026 KUMI Beauty Salon &mdash; Doha, Qatar.
+      <a href="https://www.instagram.com/kumibeautydoha/" target="_blank">Instagram</a> &middot;
+      <a href="https://www.facebook.com/profile.php?id=61553049604560" target="_blank">Facebook</a> &middot;
+      <a href="kumi-beauty-salon.html">Back to Main Site</a></p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function togglePost(e, el) {
+      e.preventDefault();
+      var post = el.closest('.blog-post');
+      var content = post.querySelector('.post-content');
+      var readMore = post.querySelector('.read-more');
+
+      content.classList.toggle('open');
+
+      if (content.classList.contains('open')) {
+        readMore.textContent = 'Show Less \u2191';
+      } else {
+        readMore.textContent = 'Read More \u2192';
+      }
+    }
+  </script>
+</body>
+</html>
